@@ -5,6 +5,9 @@ using UnityEngine;
 public class friendHand : MonoBehaviour
 {
     public GameObject hand;
+    public float rotateMod;
+
+    public bool mirrored;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +17,15 @@ public class friendHand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.eulerAngles = new Vector3(hand.transform.eulerAngles.x, hand.transform.eulerAngles.y, hand.transform.eulerAngles.z + 18.32f);
-            
+        if (mirrored)
+        {
+            transform.eulerAngles = new Vector3(hand.transform.eulerAngles.x, hand.transform.eulerAngles.y, -hand.transform.eulerAngles.z + rotateMod);
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(hand.transform.eulerAngles.x, hand.transform.eulerAngles.y, hand.transform.eulerAngles.z + rotateMod);
+        }
+
+
     }
 }
